@@ -1,13 +1,11 @@
-import ProductJson from "./mocks/products.json";
+import { products } from "./mocks/products.json";
 import { Products } from "./components/Products";
 
 function App() {
-  console.log(ProductJson.products);
-
   return (
     <>
       <h1>Shopping Cart 🛒</h1>
-      <Products products={ProductJson.products} />
+      <Products products={products} />
     </>
   );
 }

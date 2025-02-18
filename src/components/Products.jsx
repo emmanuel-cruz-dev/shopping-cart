@@ -5,12 +5,18 @@ export function Products({ products }) {
   return (
     <main className="products">
       <ul>
-        {products.map((product) => {
+        {products.slice(0, 10).map((product) => {
           return (
             <li key={product.id}>
-              <p>{product.title}</p>
-              <img src={product.thumbnail} alt="" />
-              <AddToCartIcon />
+              <img src={product.thumbnail} alt={product.title} />
+              <div>
+                <strong>{product.title}</strong> - ${product.price}
+              </div>
+              <div>
+                <button>
+                  <AddToCartIcon />
+                </button>
+              </div>
             </li>
           );
         })}
