@@ -1,12 +1,13 @@
 import { products as initialProducts } from "./mocks/products.json";
 import { Products } from "./components/Products";
 import { useState } from "react";
+import { Header } from "./components/Header";
 
 function App() {
   const [products] = useState(initialProducts);
   const [filters, setFilters] = useState({
     category: "all",
-    minPrice: 0,
+    minPrice: 100,
   });
 
   const filterProducts = (products) => {
@@ -18,10 +19,12 @@ function App() {
     });
   };
 
+  const filteredProducts = filterProducts(products);
+
   return (
     <>
-      <h1>Shopping Cart 🛒</h1>
-      <Products products={filterProducts(products)} />
+      <Header />
+      <Products products={filteredProducts} />
     </>
   );
 }
