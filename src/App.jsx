@@ -7,7 +7,7 @@ function App() {
   const [products] = useState(initialProducts);
   const [filters, setFilters] = useState({
     category: "all",
-    minPrice: 100,
+    minPrice: 0,
   });
 
   const filterProducts = (products) => {
