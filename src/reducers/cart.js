@@ -21,10 +21,24 @@ export const cartReducer = (state, action) => {
       const productInCartIndex = state.findIndex((item) => item.id === id);
 
       if (productInCartIndex >= 0) {
+        // Usando structuredClone
         const newState = structuredClone(state);
         newState[productInCartIndex].quantity += 1;
         updateLocalStorage(newState);
         return newState;
+
+        // Usando map
+        // const newState = state.map((item) => {
+        //   if (item.id == id) {
+        //     return {
+        //       ...item,
+        //       quantity: item.quantity + 1,
+        //     };
+        //   }
+        //   return item;
+        // });
+        // updateLocalStorage(newState);
+        // return newState;
       }
 
       const newState = [
