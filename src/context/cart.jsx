@@ -8,6 +8,14 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
+    // Checkear si el producto ya está en el carrito
+    const productInCartIndex = cart.findIndex((item) => item.id === product.id);
+
+    if (productInCartIndex >= 0) {
+      const newCart = structuredClone(cart);
+      newCart[productInCartIndex].quantity += 1;
+      setCart(newCart);
+    }
     setCart([...cart, product]);
   };
 
