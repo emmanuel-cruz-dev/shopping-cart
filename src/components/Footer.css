@@ -1,6 +1,7 @@
 .footer{
+  font-size: 14px;
   position: fixed;
-  left: 16px;
+  left: 10px;
   bottom: 16px;
   text-align: left;
   background: rgba(0, 0, 0, .7);
@@ -10,10 +11,14 @@
   backdrop-filter: blur(8px);
 }
 
-.footer span{
-  font-size: 14px;
+.footer a{
+  text-decoration: none;
   color: #09f;
   opacity: .8;
+}
+
+.footer a:hover{
+  text-decoration: underline;
 }
 
 .footer h4,
