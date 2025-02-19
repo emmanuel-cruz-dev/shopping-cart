@@ -23,15 +23,15 @@ export function Products({ products }) {
                 <p>{product.category}</p>
               </div>
               <div>
-                {isProductInCart ? (
-                  <button onClick={() => removeFromCart(product)}>
-                    <RemoveFromCartIcon />
-                  </button>
-                ) : (
-                  <button onClick={() => addToCart(product)}>
-                    <AddToCartIcon />
-                  </button>
-                )}
+                <button
+                  onClick={() => {
+                    isProductInCart
+                      ? removeFromCart(product)
+                      : addToCart(product);
+                  }}
+                >
+                  {isProductInCart ? <RemoveFromCartIcon /> : <AddToCartIcon />}
+                </button>
               </div>
             </li>
           );
