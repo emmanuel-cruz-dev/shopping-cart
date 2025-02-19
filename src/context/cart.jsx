@@ -6,6 +6,7 @@ export const CartContext = createContext();
 // 2. Crear provider
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  console.log(cart);
 
   const addToCart = (product) => {
     // Checkear si el producto ya está en el carrito
