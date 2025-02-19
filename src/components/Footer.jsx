@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer className="footer">
       {/* {JSON.stringify(filters, null, 2)} */}
-      {JSON.stringify(cart, null, 2)}
+      {/* {JSON.stringify(cart, null, 2)} */}
       {/* <span>Categoría: {filters.category}</span>
       <span>Precio: ${filters.minPrice}</span>
       <h4>
