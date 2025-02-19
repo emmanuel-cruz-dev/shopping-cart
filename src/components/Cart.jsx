@@ -3,8 +3,24 @@ import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from "../hooks/useCart";
 import "./Cart.css";
 
-export default function Cart() {
-  const { cart, addToCart } = useCart();
+function CartItem({ thumbnail, price, title, quantity, addToCart }) {
+  return (
+    <li>
+      <img src={thumbnail} alt={title} />
+      <div>
+        <strong>{title}</strong> - ${price}
+      </div>
+
+      <footer>
+        <small>Qty: {quantity}</small>
+        <button onClick={addToCart}>+</button>
+      </footer>
+    </li>
+  );
+}
+
+export function Cart() {
+  const { cart, addToCart, clearCart } = useCart();
 
   const cartCheckboxId = useId();
 
@@ -17,38 +33,16 @@ export default function Cart() {
 
       <aside className="cart">
         <ul>
-          {cart.map((product) => {
-            return (
-              <li key={product.id}>
-                <img src={product.thumbnail} alt="" />
-                <div>
-                  <strong>iPhone</strong> - $1499
-                </div>
-
-                <footer>
-                  <small>Qty: {product.quantity}</small>
-                  <button onClick={() => addToCart(product)}>+</button>
-                </footer>
-              </li>
-            );
-          })}
-          {/* <li>
-            <img
-              src="https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
-              alt=""
+          {cart.map((product) => (
+            <CartItem
+              key={product.id}
+              addToCart={() => addToCart(product)}
+              {...product}
             />
-            <div>
-              <strong>iPhone</strong> - $1499
-            </div>
-
-            <footer>
-              <small>Qty: 1</small>
-              <button onClick={() => addToCart()}>+</button>
-            </footer>
-          </li> */}
+          ))}
         </ul>
 
-        <button>
+        <button onClick={clearCart}>
           <ClearCartIcon />
         </button>
       </aside>
